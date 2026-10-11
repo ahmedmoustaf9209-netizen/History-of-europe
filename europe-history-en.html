@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Europe's Journey 1648–1815</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f6;--card:#fff;--ink:#17233b;--mut:#5b6679;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1626;--card:#19243c;--ink:#e8edf7;--mut:#9aa7bd}}
+:root[data-theme="dark"]{--bg:#0f1626;--card:#19243c;--ink:#e8edf7;--mut:#9aa7bd}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Lexend,system-ui,sans-serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;overflow-x:auto;padding:8px 12px;background:var(--bg)}
+nav button{flex:none;font:inherit;font-size:.9rem;font-weight:600;border:2px solid var(--c);color:var(--c);background:transparent;border-radius:99px;padding:2px 14px}
+nav button.on{background:var(--c);color:#fff}
+main{max-width:680px;margin:auto;padding:0 14px 40px}
+header{background:var(--c);color:#fff;border-radius:22px;padding:22px 20px;margin:12px 0}
+header small{opacity:.85}
+h1{margin:4px 0 0;font-size:1.6rem;line-height:1.3}
+h2{font-size:1.15rem;margin:26px 0 8px;border-left:5px solid var(--c);padding-left:10px}
+.kid{background:var(--card);border:2px dashed var(--c);border-radius:16px;padding:12px 14px}
+details{background:var(--card);border-radius:14px;margin:8px 0;padding:0 14px}
+summary{cursor:pointer;font-weight:600;padding:12px 0;list-style:none}
+summary::after{content:'+';float:right;color:var(--c);font-weight:800}
+details[open] summary::after{content:'−'}
+details p{margin:0 0 10px;font-size:.95rem}
+.eg{background:color-mix(in srgb,var(--c) 14%,transparent);border-radius:10px;padding:8px 12px;margin-bottom:12px;font-size:.9rem}
+.card{perspective:900px;height:190px;touch-action:pan-y;cursor:grab;user-select:none}
+.in{position:relative;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.in.flip{transform:rotateY(180deg)}
+.fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;border-radius:18px;background:var(--c);color:#fff;font-weight:800;font-size:1.2rem}
+.fc.bk{transform:rotateY(180deg);background:var(--card);color:var(--ink);border:3px solid var(--c);font-weight:600;font-size:1rem}
+.cnt{text-align:center;color:var(--mut);font-size:.85rem;margin-top:8px}
+.q{background:var(--card);border-radius:14px;padding:12px 14px;margin:10px 0}
+.q p{margin:6px 0 8px;font-weight:600}
+.lv{font-size:.75rem;background:var(--c);color:#fff;border-radius:99px;padding:1px 10px}
+.q button{display:block;width:100%;text-align:left;font:inherit;font-size:.92rem;background:transparent;color:inherit;border:2px solid var(--mut);border-radius:10px;padding:6px 12px;margin:6px 0}
+.q button.ok{border-color:#16a34a;background:#16a34a22}
+.q button.no{border-color:#dc2626;background:#dc262622}
+.ex{font-size:.9rem;color:var(--mut)}
+.sc{font-weight:800;text-align:center;margin-top:10px}
+[hidden]{display:none}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+<main id="app"></main>
+<script>
+const U=[
+{n:"Unit 1",t:"The Westphalian System, 1648",c:"#0f766e",
+k:"Imagine kids fighting for 30 years over whose religion is best. In the end they agree: everyone rules their own house, everyone is equal, and nobody barges into someone else's house.",
+s:[
+["Before the treaty: the Thirty Years' War (1618–1648)","A series of wars in Central Europe between Catholics and Protestants (Lutherans and Calvinists). One of the longest and cruelest wars ever: over <b>8 million</b> dead from fighting, famine and disease. It began as a civil war and grew to involve most of the great powers.","A quarrel between two family members that slowly pulls in every relative."],
+["Not only about religion!","Religious cause: Catholics vs Lutherans and Calvinists. Political cause: the king of France was a <b>Catholic</b> yet helped the <b>Protestants</b>, because the Bourbon family was against the Holy Roman Empire. So the war was also about the balance of power and political power in Europe.","A company backing its rival's enemy, not out of love, but to weaken the rival."],
+["The Peace of Westphalia","A series of peace treaties signed <b>May–October 1648</b> in Osnabrück and Münster, Germany. They ended the war in the Holy Roman Empire, settled the Catholic–Protestant conflict, were a milestone toward tolerance and secularization, and reduced the Catholic Church's political influence."],
+["The four principles","<b>Sovereignty:</b> every state rules its own people and territory. <b>Legal equality:</b> all states are equal. <b>Non-intervention:</b> no interfering in another state's internal affairs. <b>National loyalty:</b> people's loyalty goes to their state.","Sovereignty: you rule your own house. Non-intervention: your neighbor can't rearrange your room."],
+["The Pope and the nation-state","Before 1648 there was no nation-state system; feudalism dominated. The treaty replaced it with co-equal sovereign states, and each ruler had power over nation and state, <b>including religion</b>. The Pope called it a <b>“sin”</b> because it ended his monopoly."],
+["Consequences","The Holy Roman Empire split into many independent states and stopped being a major power; about <b>40%</b> of its population died. France became dominant in Western Europe, Sweden in the Baltic, and France, the Netherlands and Sweden strengthened their identities as nation-states. Europe was divided into 3 main faiths: Catholic, Lutheran, Calvinist."],
+["Why a turning point?","It started the <b>balance of power</b> era (1648–1815): shifting alliances that stop any country from becoming too strong, with diplomacy at the center. The system was <b>multipolar</b>: France, Austria, Russia, Prussia, England.","In football: if one team gets too strong, the others team up against it."]],
+d:[["1618–1648","The Thirty Years' War"],["1648","Peace of Westphalia (Osnabrück and Münster)"],["Balance of power?","Shifting alliances that stop any country from becoming too powerful"],["Multipolar system?","More than two great powers (1648 until World War II)"],["Sovereignty?","Each state has supreme authority over its people and land; no one intervenes"],["Secularism?","Separation of religion (church) from politics"],["The 3 faiths?","Catholic – Lutheran – Calvinist"],["The 5 great powers?","France – Austria – Russia – Prussia – England"]],
+q:[
+["Easy","Who fought in the Thirty Years' War?",["Protestants and Catholics","Catholics and Orthodox","Muslims and Catholics"],"Religious wars between Catholics and Protestants in Central Europe."],
+["Easy","Which treaty ended the war in 1648?",["Westphalia","Vienna","Versailles"],"Signed in Osnabrück and Münster, Germany."],
+["Medium","True or false: the Thirty Years' War was only about religion.",["True","False"],"False: it was also about balance of power; Catholic France backed the Protestants.",1],
+["Medium","Which empire fragmented after the treaty?",["Holy Roman Empire","French Empire","Spanish Empire"],"It split into many independent states and was no longer a major power."],
+["Medium","What was the international system after Westphalia?",["Multipolar","Bipolar","Unipolar"],"France, Austria, Russia, Prussia and England: more than two great powers."],
+["Hard","Why did the Pope call the treaty a “sin”?",["It ended his monopoly in favor of sovereign rulers","It raised taxes on the Church","It banned Catholic worship"],"Each ruler now had power over their state, including religion."],
+["Hard","Which principle forbids interfering in other states' internal affairs?",["Non-intervention","National loyalty","Balance of power"],"Balance of power is a system of alliances; non-intervention is the principle."]]},
+{n:"Unit 2",t:"The French Revolution and Napoleon",c:"#b42343",
+k:"The king, nobles and Church pay no taxes, while ordinary people (98%) pay and go hungry. They got fed up: power belongs to us, not the king. Then Napoleon arrived and ruled by force.",
+s:[
+["France before 1789","The most powerful, populous and prosperous country in Europe; French was the language of aristocracy and diplomacy. Monarchs (except England) ruled by <b>divine right</b>: the king was the state, with the Church close by. The balance of power was later challenged by the Enlightenment, the French Revolution, the Industrial Revolution and the rising middle class.","A school where the principal is the law and nobody may question him."],
+["Causes of the Revolution","<b>Long-term:</b> social and economic change, Enlightenment ideas, a weak king isolated at Versailles. <b>Short-term:</b> debt and financial crisis (including aid to America against Britain), unemployment, a bad harvest and famine, prices rising while wages didn't, and unfair taxes since the Church and nobles were exempt. <b>Socially:</b> a new middle class (bourgeoisie). <b>Culturally:</b> ideas of liberty and equality.","A class where everyone pays fees except three pupils."],
+["The Enlightenment","17th–18th century, the <b>Age of Reason</b>: knowledge comes from experience, experiment and observation. Its key thinkers were French, like <b>Rousseau</b>. It inspired the Revolution (but wasn't its only cause) and laid the foundation for human rights, popular sovereignty, tolerance and respect for law."],
+["1789: the spark","In May Louis XVI called the <b>Estates General</b> (first meeting since 1614): First Estate clergy, Second nobles, Third <b>98%</b> of the people with no power or money. They brought <b>cahiers</b> (lists of grievances) asking for moderate reform. The Third Estate asked to change the voting rules; the king refused, so it declared itself the <b>National Assembly</b> (June). Finding the hall locked, it met at the tennis court and swore the <b>Tennis Court Oath</b>. On <b>14 July</b> 80,000 stormed the Bastille (still a national holiday). In August feudalism was abolished, and on <b>26 August</b> came the <b>Declaration of the Rights of Man</b>: liberty, property, security, resistance to oppression.","Pupils find their classroom locked, so they hold class on the sports field."],
+["From monarchy to republic","October 1789: the king refused to sign the Declaration, so a crowd of women and 20,000 guardsmen under Lafayette moved the royal family from Versailles to Paris. June 1791: a constitution with an elected assembly and only a <b>suspensive veto</b> for the king. He rejected it, and Prussia and Austria went to war with France. September 1792: the elected Convention abolished the monarchy and declared the <b>First Republic</b> (France is now in its Fifth)."],
+["Terror and the guillotine","January 1793: Louis XVI is guillotined (Marie Antoinette 9 months later). February 1793: Britain, Holland and Spain join Austria and Prussia against France. Radicals gained strength through the <b>Committee of Public Safety</b>, led by Danton then Robespierre, both guillotined. Next came the <b>Directory</b>, five men, for 4 years."],
+["Napoleon","A general at 24 (1793). <b>Coup of 1799</b> backed by the Directors, consul for life 1802, emperor 1804. He kept the Revolution's gains but weakened representative bodies, censored the press and made peace with the Church. <b>The Napoleonic Code (1804):</b> equality before the law, trial by jury, religious freedom, the basis of law in France and much of Europe, but it put the state above individuals and dropped rights of women and children. France controlled Spain, Italy, Belgium, Holland, Switzerland and parts of Germany and Poland.","Hero or tyrant? He spread revolutionary ideas, but by army and concentrated power."],
+["The fall","1812: he invaded Russia; the harsh winter and hunger destroyed his army, and only <b>70,000</b> returned. The allies entered Paris and exiled him to <b>Elba</b>. He escaped and returned, but was finally beaten at <b>Waterloo 1815</b> by Britain and Prussia, then exiled to <b>St. Helena</b> and died in 1821. <b>Louis XVIII</b> (brother of Louis XVI) was restored with a constitutional charter, and France returned to its 1790 borders."]],
+d:[["14 July 1789","Storming of the Bastille"],["26 August 1789","Declaration of the Rights of Man"],["The three estates?","1 Clergy – 2 Nobles – 3 The people (98%)"],["Tennis Court Oath?","“Wherever we meet, there is the nation”"],["September 1792","Monarchy abolished, First Republic declared"],["January 1793","Louis XVI guillotined"],["Committee of Public Safety?","Danton then Robespierre – both guillotined"],["1799 – 1802 – 1804","Coup – consul for life – emperor"],["The Napoleonic Code?","Equality before law + jury trials + religious freedom (1804)"],["1812 then 1815","Russia invasion (70,000 returned), then Waterloo and St. Helena"]],
+q:[
+["Easy","When was the Bastille stormed?",["14 July 1789","26 August 1789","September 1792"],"It is still France's national holiday."],
+["Easy","What share of France's population was the Third Estate?",["98%","50%","10%"],"It had no power and no money."],
+["Medium","Why were taxes unfair before the Revolution?",["The Church and nobles were exempt","The poor were exempt","There were no taxes"],"So the whole burden fell on the Third Estate."],
+["Medium","In which year did Napoleon crown himself emperor?",["1804","1789","1815"],"After becoming consul for life in 1802."],
+["Medium","True or false: Napoleon abolished all the Revolution's gains.",["True","False"],"False: he kept many (like equality before the law) but weakened representative institutions.",1],
+["Hard","Why did Louis XVI's execution raise the threat to Europe's monarchies?",["Britain, Holland and Spain joined the war against France","France allied with Austria","The war ended"],"Monarchs saw the Revolution as a direct threat to their thrones."],
+["Hard","What is the main criticism of the Napoleonic Code?",["It put the state above individuals and dropped women's and children's rights","It banned religious freedom","It abolished equality before the law"],"Even though it guaranteed equality, juries and religious freedom."]]},
+{n:"Unit 3",t:"Congress of Vienna and the Concert of Europe",c:"#5b3fa0",
+k:"Napoleon (the troublemaker) lost, and the four big powers sat down to divide the map and stop any new revolution. Soon they began to disagree, because each wanted its own interests.",
+s:[
+["Victors and loser","The loser: <b>France</b>. The victors: Austria, Britain, Prussia, Russia. <b>Treaty of Paris I (30 May 1814):</b> <b>Louis XVIII</b> of the Bourbon family took the throne, autocratic regimes returned, and a secret article kept France out of the European balance of power. Then came the <b>Vienna Settlement</b> (September 1814 – June 1815)."],
+["The Age of Metternich","Metternich was chancellor of Austria and the leading counter-revolutionary. His main concern was <b>stability</b>, and he saw revolution as a problem.","A principal who wants silence and treats every protest as trouble."],
+["Aims of the Congress of Vienna","1) Balance of power. 2) Peace and stability based on <b>legitimacy</b> (rightful kings restored). 3) Reward the victors with territorial adjustments (compensation policy). 4) Punish France."],
+["The Congress System: two documents","<b>Holy Alliance (September 1815):</b> idea of Tsar Alexander I; main signatories Prussia, Austria and Russia; signed by all rulers except the <b>Pope, Britain and the Sultan</b>. <b>Quadruple Alliance + Article VI of Paris II (20 November 1815):</b> through <b>Castlereagh</b>, British foreign secretary, between Austria, Russia, Britain and Prussia: it would last 20 years to keep the Bonaparte dynasty out of France, and congresses would meet to discuss “great common interests.”"],
+["Diplomacy of conferences 1818–1823","<b>1) Aix-la-Chapelle 1818:</b> settled France's debts and the withdrawal of troops. The Tsar wanted an alliance against revolutions and an international army; Castlereagh warned against it. <b>2) Troppau 1820:</b> revolts in Spain, Portugal, Naples and Italy. <b>Troppau Protocol</b> (Metternich's view): Russia, Prussia and Austria would intervene in any state threatening others; Britain objected. <b>3) Laibach 1821:</b> the King of the Two Sicilies asked for help and Austria crushed the revolt; Britain objected. <b>4) Verona 1822:</b> the new British foreign secretary <b>Canning</b> opposed intervention, yet France intervened in Spain with 100,000 troops in 1823 with the Congress's approval. <b>5) St. Petersburg 1823:</b> the Greek independence war; the Tsar sympathized since the Ottomans were an old enemy, and Russia, France and Britain agreed on Greek independence.","Neighbors agree to step into any house with trouble, but one neighbor (Britain) keeps saying: not our business."],
+["Why did it end?","The common threat (France) ended, so the alliance ended, and each state thought of its national interest (like Russia with Greece). Metternich's system rested on: Paris I, the Vienna Settlement, the Holy Alliance, the Quadruple Alliance and conference diplomacy."]],
+d:[["30 May 1814","Treaty of Paris I"],["Sept 1814 – June 1815","The Vienna Settlement"],["Metternich?","Austrian chancellor – wanted stability – against revolutions"],["Holy Alliance?","Sept 1815 – Tsar Alexander's idea – everyone signed except the Pope, Britain and the Sultan"],["Quadruple Alliance?","20 Nov 1815 – Castlereagh – Austria, Russia, Britain, Prussia – 20 years"],["The congresses in order?","Aix-la-Chapelle 1818 – Troppau 1820 – Laibach 1821 – Verona 1822 – St. Petersburg 1823"],["Britain's position?","Objected to collective intervention in other states' affairs"],["Why did it end?","The common threat (France) ended and each state pursued its own interest"]],
+q:[
+["Easy","Who was Metternich?",["Austrian chancellor and counter-revolutionary","British foreign secretary","Tsar of Russia"],"His main concern was stability."],
+["Easy","Whose idea was the Holy Alliance?",["Tsar Alexander I","Castlereagh","Napoleon"],"All rulers signed except the Pope, Britain and the Sultan."],
+["Medium","Who was Castlereagh?",["British foreign secretary behind the Quadruple Alliance","Austrian chancellor","King of France"],"The Quadruple Alliance was signed 20 November 1815."],
+["Medium","What did the Troppau Protocol (1820) say?",["Right to intervene in any state threatening others","Ban on intervention","Greek independence"],"Britain objected to it."],
+["Medium","True or false: Britain supported intervention against revolutions at the congresses.",["True","False"],"False: it objected at Troppau, Laibach and Verona, fearing for the balance of power.",1],
+["Hard","Which congress approved France's 100,000-man intervention in Spain?",["Verona 1822","Aix-la-Chapelle 1818","Laibach 1821"],"The intervention actually took place in 1823."],
+["Hard","What was the main reason the Concert of Europe ended?",["The common threat vanished and national interests came first","Russia was defeated","France grew stronger"],"Russia is an example: it changed course over Greece."]]}
+];
+function deck(h,L){let i=0,x0=0,dx=0,dn=0;
+h.innerHTML='<div class="card"><div class="in"><div class="fc"></div><div class="fc bk"></div></div></div><div class="cnt"></div>';
+const c=h.firstChild,n=c.firstChild,f=n.children[0],b=n.children[1],ct=h.lastChild;
+const show=()=>{n.classList.remove('flip');f.textContent=L[i][0];b.textContent=L[i][1];ct.textContent=(i+1)+' / '+L.length+' — swipe for next, tap to flip'};
+c.onpointerdown=e=>{dn=1;x0=e.clientX;dx=0;c.setPointerCapture(e.pointerId);c.style.transition='none'};
+c.onpointermove=e=>{if(!dn)return;dx=e.clientX-x0;c.style.transform='translateX('+dx+'px) rotate('+dx/18+'deg)'};
+c.onpointerup=c.onpointercancel=()=>{if(!dn)return;dn=0;c.style.transition='transform .25s';
+if(Math.abs(dx)>70){c.style.transform='translateX('+(dx>0?400:-400)+'px) rotate('+dx/5+'deg)';setTimeout(()=>{i=(i+(dx>0?1:L.length-1))%L.length;c.style.transition='none';c.style.transform='';show()},230)}
+else{c.style.transform='';if(Math.abs(dx)<6)n.classList.toggle('flip')}};
+show()}
+function quiz(h,Q){let s=0;
+Q=Q.map(q=>{const a=q[4]||0,o=q[2].map((x,i)=>[x,i==a]);if(o.length>2)o.sort(()=>Math.random()-.5);return[q[0],q[1],o.map(x=>x[0]),q[3],o.findIndex(x=>x[1])]});
+h.innerHTML=Q.map((q,k)=>'<div class="q"><span class="lv">'+q[0]+'</span><p>'+q[1]+'</p>'+q[2].map((o,j)=>'<button data-k="'+k+'" data-j="'+j+'">'+o+'</button>').join('')+'<div class="ex"></div></div>').join('')+'<div class="sc"></div>';
+h.onclick=e=>{const b=e.target.closest('button');if(!b)return;const q=b.parentNode;if(q.dataset.d)return;q.dataset.d=1;
+const Z=Q[+b.dataset.k],j=+b.dataset.j;q.querySelectorAll('button')[Z[4]].classList.add('ok');
+if(j==Z[4])s++;else b.classList.add('no');
+q.querySelector('.ex').textContent=(j==Z[4]?'✔ Correct — ':'✘ Wrong — ')+Z[3];
+h.querySelector('.sc').textContent='Score: '+s+' / '+Q.length}}
+const app=document.getElementById('app'),nav=document.getElementById('nav'),secs=[];
+const all=[].concat(...U.map(u=>u.q)).sort(()=>Math.random()-.5);
+const X={n:"Exam",t:"Final exam on all three units",c:"#b45309",k:"Questions from Westphalia, the French Revolution and Vienna, all mixed up. Try them without peeking at the explanations!"};
+U.concat([X]).forEach((u,i)=>{
+const s=document.createElement('section');s.style.setProperty('--c',u.c);s.hidden=i!=0;
+s.innerHTML='<header><small>'+u.n+'</small><h1>'+u.t+'</h1></header><div class="kid"><b>Simply put:</b> '+u.k+'</div>'+
+(u.s?'<h2>Explanation</h2>'+u.s.map((x,j)=>'<details'+(j?'':' open')+'><summary>'+x[0]+'</summary><p>'+x[1]+'</p>'+(x[2]?'<div class="eg">Example: '+x[2]+'</div>':'')+'</details>').join('')+'<h2>Quick cards</h2><div class="deck"></div>':'')+
+'<h2>Test yourself</h2><div class="quiz"></div>';
+app.append(s);secs.push(s);
+if(u.d)deck(s.querySelector('.deck'),u.d);
+quiz(s.querySelector('.quiz'),u.q||all);
+const b=document.createElement('button');b.textContent=u.n;b.style.setProperty('--c',u.c);b.className=i?'':'on';
+b.onclick=()=>{secs.forEach((x,j)=>x.hidden=j!=i);[...nav.children].forEach((x,j)=>x.classList.toggle('on',j==i));scrollTo(0,0)};
+nav.append(b)});
+</script>
+</body>
+</html>
